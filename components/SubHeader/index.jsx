@@ -6,11 +6,11 @@ export default function index() {
     return (
         <div className='subhead-container'>
             
-            {categorys.map(category => {
+            {categorys.map((category,index) => {
                 return (
                     <Link href={`/blog/${category.name}`} >
                         <a>
-                         <Card categorys={category} />
+                         <Card key={index} categorys={category} />
                          </a>
                  </Link>
                 )

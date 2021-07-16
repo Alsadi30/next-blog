@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 
 
- function Post({post,index}) {
+ function Post({post}) {
 
     
     return (
