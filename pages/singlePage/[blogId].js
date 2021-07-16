@@ -49,15 +49,14 @@ export const getStaticPaths = () => {
 
 
 
-export default function blogId({posts}) {
+export default function BlogId({posts}) {
    
   
 
     const router = useRouter()
 
     let post = posts?.filter(post => router.query.blogId === post.id)
-    
-    console.log('at blogid',post?.length)
+   
 
 	if (router.isFallback) {
 		return <h1>Loading...</h1>

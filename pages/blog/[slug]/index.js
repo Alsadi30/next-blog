@@ -1,7 +1,7 @@
 import Header from '../../../components/Header'
 import SectionHeader from '../../../components/SectionHeader'
 import StraightCardSection from '../../../components/StraightCardSection'
-import { useRouter } from 'next/router'
+import {useRouter}  from 'next/router'
 
       
 
@@ -44,10 +44,10 @@ export const getStaticPaths = () => {
 
 
 
-export default function index({posts}) {
+ function Index({posts}) {
 
-    const router = useRouter()
-
+    const router =  useRouter()
+   
 
     const slug =router.query.slug
 
@@ -60,3 +60,6 @@ export default function index({posts}) {
         </div>
     )
 }
+
+
+export default Index

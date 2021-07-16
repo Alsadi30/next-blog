@@ -7,7 +7,8 @@ import Link from 'next/link'
 export default function index() {
     return (
         <div className='head-container'>
-               <Link href='/'>
+            <Link href='/'>
+                <a>
                 <div className='BrandLogo'>
                 <Image
                src={Logo2}
@@ -15,7 +16,8 @@ export default function index() {
                width={130}
                height={50}
                 />
-                </div>
+                    </div>
+                    </a>
                 </Link>
             <div className='input-search'>
 

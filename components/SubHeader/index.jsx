@@ -8,9 +8,9 @@ export default function index() {
             
             {categorys.map((category,index) => {
                 return (
-                    <Link href={`/blog/${category.name}`} >
+                    <Link href={`/blog/${category.name}`} key={index} >
                         <a>
-                         <Card key={index} categorys={category} />
+                         <Card  categorys={category} />
                          </a>
                  </Link>
                 )
