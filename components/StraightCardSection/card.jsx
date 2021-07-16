@@ -1,19 +1,22 @@
 import Image from 'next/image'
-import readingTime from 'reading-time'
 import Link from 'next/link'
+import moment from 'moment'
+
+
+
 
 
 export default function SCard({post}) {
-
-    const time = readingTime(post.body)
+    
+    const date = moment(post.published_at).format('MMMM Do YYYY')
 
     return (
         <div className='straight-card'>
-            <Link href={`/blog/${post.category}/${post.id}`}>
+            <Link href={`/singlePage/${post.id}`}>
                   <a>
-            <div className=''>
+            <div className='straight-img'>
                 <Image className='flat-card-img'
-                    src={post.img}
+                    src={post.feature_image}
                     width={330}
                     height={240}
                     alt='thumbnail'
@@ -24,12 +27,12 @@ export default function SCard({post}) {
                 {post.title}
             </div>
             <div className='straight-card-body'>
-                {post.body.slice(0,100)}...
+                {post.custom_excerpt?.slice(0,100)}...
             </div>
             <div className='straight-card-date'>
-                <span>{post.date}</span>
+                <span>{date}</span>
                 <span className='straight-dot'>.</span>
-                <span>{time.text}</span>
+                <span>{post.reading_time} min read</span>
                 </div>
                 </a>
                 </Link>

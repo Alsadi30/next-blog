@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import BrandLogo from '../../assets/icons/brandLogo.png'
+import Logo2 from '../../assets/icons/Logo2.png'
 import SearchIcon from '../../assets/icons/SearchIcon.png'
 import Link from 'next/link'
 
@@ -8,12 +8,14 @@ export default function index() {
     return (
         <div className='head-container'>
                <Link href='/'>
-               <Image
-               src={BrandLogo}
+                <div className='BrandLogo'>
+                <Image
+               src={Logo2}
                alt="Picture of the author"
                width={130}
                height={50}
                 />
+                </div>
                 </Link>
             <div className='input-search'>
 

@@ -1,19 +1,23 @@
-import Posts from "../../constants"
 import Sidecard from './sidecard'
 
-export default function RelatedPost(props) {
 
-    const category = props.category
+  
 
-    let posts;
-    if(category) posts = Posts.filter(Post=>Post.category===category)
-    console.log(posts) 
+
+
+export default function RelatedPost({posts}) {
+
+    
+   
+
+    let Posts =  posts.slice(0,6)
+    
     return (
         <div className='side-container'>
             <div className='side-title'>
                 Related Post
             </div>
-        { posts?.map(post=> <Sidecard post={post}/>)}
+        { Posts?.map(post=> <Sidecard post={post}/>)}
     </div>
     )
 }

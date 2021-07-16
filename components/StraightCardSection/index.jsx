@@ -1,16 +1,23 @@
-import Posts from "../../constants"
-import Card from './card'
 
-export default function StraightCardSection({ CategoryName }) {
+import SCard from './card'
+
+export default function StraightCardSection(props) {
     
-    const posts = Posts.filter(post => {
-       return post.category === CategoryName
+    let {posts,slug,Place} = props
+
+    
+  
+    const Posts = posts?.filter(post => {
+       return post?.slug.split('-')[0] === slug.split(' ')[0].toLowerCase()
     })
+
+   
+    if(Place) Posts.splice(6)
    
     
     return (
         <div className='straight-card-section-container'>
-            {posts.map(post=> <Card post={post}/>)}
+            {Posts?.map((post,index)=> <SCard key={index} post={post}/>)}
         </div>
     )
 }

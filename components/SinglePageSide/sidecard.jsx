@@ -1,16 +1,16 @@
 import Image from 'next/image'
-import readingTime from 'reading-time'
 import Link from 'next/link'
+import moment from 'moment'
 
 export default function Sidecard({post}) {
-    const time = readingTime(post.body)
+ 
     return (
         <div className='side-card'>
-             <Link href={`/blog/${post.category}/${post.id}`}>
+             <Link href={`/singlePage/${post.id}`}>
                   <a>
-             <div className=''>
-                <Image className='side-card-img'
-                    src={post.img}
+             <div className='side-card-img-div'>
+                <img className='side-card-img'
+                    src={post.feature_image}
                     width={290}
                     height={390}
                     alt='thumbnail'
@@ -18,7 +18,7 @@ export default function Sidecard({post}) {
             </div>
             </a>
             </Link>
-            <Link href={`/blog/${post.category}/${post.id}`}>
+            <Link href={`/singlePage/${post.id}`}>
                   <a>
             <div>
              <div className='side-card-title'>
@@ -26,9 +26,9 @@ export default function Sidecard({post}) {
              </div>
            
                 <div className='card-date'>
-                    <span>{post.date}</span>
+                    <span>{moment(post.published_at).format('MMMM Do YYYY')}</span>
                     <span className='dot'>.</span>
-                    <span>{time.text}</span>
+                    <span>{post.reading_time } min read</span>
                 </div>
                     </div>
                     </a>

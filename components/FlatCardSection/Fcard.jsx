@@ -1,27 +1,27 @@
 import Image from 'next/image'
-import readingTime from 'reading-time'
 import Link from 'next/link'
+import moment  from 'moment'
 
 export default function FCard({ post }) {
-
-    const time = readingTime(post.body)
+   
+    const date = moment(post.published_at).format('MMMM Do YYYY')
 
     return (
         <div className='flat-card'>
-            <Link href={`/blog/${post.category}/${post.id}`}>
+            <Link href={`/singlePage/${post.id}`}>
                   <a>
-            <div className=''>
+            <div className='flat-card-img-div'>
                 <Image className='flat-card-img'
-                    src={post.img}
-                    width={420}
-                    height={580}
+                    src={post.feature_image}
+                    width={215}
+                    height={290}
                     alt='thumbnail'
                     />
                     </div>
                     </a>
                 </Link>
  
-                <Link href={`/blog/${post.category}/${post.id}`}>
+                <Link href={`/singlePage/${post.id}`}>
                 <a>
                     
              <div>
@@ -29,12 +29,12 @@ export default function FCard({ post }) {
                  {post.title}
              </div>
              <div className='card-body'>
-                 {post.body.slice(0,50)}...
+                 {post.custom_excerpt?.slice(0,50)}...
                 </div>
                 <div className='card-date'>
-                    <span>{post.date}</span>
+                    <span>{date}</span>
                     <span className='dot'>.</span>
-                    <span>{time.text}</span>
+                    <span>{post.reading_time} min read</span>
                 </div>
                     </div>
                     </a>

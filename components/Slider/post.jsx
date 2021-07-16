@@ -1,10 +1,8 @@
-import React,{useState,useEffect} from 'react'
 import Image from 'next/image'
 
 
 
  function Post({post,index}) {
-
 
     
     return (
@@ -14,16 +12,16 @@ import Image from 'next/image'
                   {post.title}
                </div>
                <div className='slider-body'>
-                  {post.body.slice(0,80)}
+                  {post.custom_excerpt?.slice(0,80)}
                 </div>
                 
             </div>
             <div className='slider-right'>
-                <Image
+                <img
                     className='slider-img'
-                    src={post.img}
-                    width={370}
-                    height={425}
+                    src={post.feature_image}
+                    width='370px'
+                    height='425px'
                     alt='img'
                 />
             </div>
