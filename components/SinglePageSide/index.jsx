@@ -17,7 +17,7 @@ export default function RelatedPost({posts}) {
             <div className='side-title'>
                 Related Post
             </div>
-        { Posts?.map(post=> <Sidecard post={post}/>)}
+        { Posts?.map((post,index)=> <Sidecard key={index} post={post}/>)}
     </div>
     )
 }
