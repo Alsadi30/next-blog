@@ -1,18 +1,16 @@
-import readingTime from "reading-time"
 import Image from 'next/image'
-
-export default function Title(props) {
-
-
-    const title = props.post?.title
-    const body = props.post?.body
-    const author = props.post?.author
-    const date = props.post?.date
-    const img = props.post?.img
+import moment from 'moment'
 
 
-    let time;
-       if(body)time = readingTime(body)
+
+export default function Title({post}) {
+  
+    console.log(post)
+
+    const title = post?.title
+    const date = moment(post?.published_at).format('MMMM Do YYYY')
+    const img = post?.feature_image
+
 
     return (
         <div className='title-container'>
@@ -21,13 +19,13 @@ export default function Title(props) {
             </div>
             <div className='author'>
                 <span>
-                By <strong>{` ${ author} . `}</strong>               
+                By <strong>{` Sayed . `}</strong>               
                 </span>
                 <span>
               Published at  <strong>{`  ${date}  .`} </strong>  
                 </span>
                 <span className='read-time'>
-                    { ` ${time?.text}`}
+                    { ` ${post.reading_time} min read`}
                 </span>
             </div>
 

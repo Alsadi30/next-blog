@@ -8,12 +8,34 @@ import StraightCardSection from '../components/StraightCardSection'
 import Footer from '../components/Footer'
 
 
+const {BLOG_URL, CONTENT_API_KEY} = process.env
+
+
+const getPosts =async () => {
+  
+  const res = await fetch(
+		`${BLOG_URL}/ghost/api/v3/content/posts/?key=${CONTENT_API_KEY}`
+	).then((res) => res.json())
+
+	const posts = res.posts
+
+	return posts
+
+}
 
 
 
+export const getStaticProps = async ({ params }) => {
+	const posts = await getPosts()
+	return {
+		revalidate: 10,
+		props: { posts }
+	}
+}
 
-export default function Home() {
- 
+
+
+export default function Home({posts}) {
   return (
     <div className='container' >
       <Head>
@@ -24,15 +46,15 @@ export default function Home() {
       <div>
         <Header />
         <SubHeader />
-        <Slider />
-        <SectionHeader CategoryName={'Energy & Environment'}/>
-        <FlatCardSection CategoryName={'Energy & Environment'} Place='home' />
-        <SectionHeader CategoryName={'Physics & Mathematics'} />
-        <StraightCardSection CategoryName={'Physics & Mathematics'}  Place='home'/>
-        <SectionHeader CategoryName={'Technology'} />
-        <FlatCardSection CategoryName={'Technology'} />
-        <SectionHeader CategoryName={'Space'} />
-        <StraightCardSection CategoryName={'Space'} />
+        <Slider Posts={posts} />
+        <SectionHeader slug={'Energy & Environment'}/>
+        <FlatCardSection posts={posts} slug={'Energy & Environment'} Place={true}/>
+        <SectionHeader slug={'Physics & Mathematics'} />
+        <StraightCardSection slug={'Physics & Mathematics'}  posts={posts} Place={true}/>
+        <SectionHeader slug={'Technology'} />
+        <FlatCardSection posts={posts}  slug={'Technology'}  Place={true}/>
+        <SectionHeader slug={'Space'} />
+        <StraightCardSection posts={posts} slug={'Space'}  Place={true}/>
         <Footer />
       </div>
      

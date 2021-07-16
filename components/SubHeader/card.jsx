@@ -7,7 +7,7 @@ export default function Card(props) {
         <div className='card'>
            
                
-            <div>
+            <div className='subhead-icon'>
                 <Image
                     src={icon.cetIcon}
                     width={25}

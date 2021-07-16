@@ -1,7 +1,7 @@
-import Posts from '../../constants'
+
 import Post from './post'
 
-export default function Slider() {
+export default function Slider({Posts}) {
     return (
 
         <div className='slider-container'>
